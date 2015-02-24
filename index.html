@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="bower_components/reveal.js/css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="bower_components/reveal.js/css/theme/night.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="bower_components/reveal.js/lib/css/night.css">
@@ -40,38 +40,53 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
+				<section data-center="true">
 					<h1>Domain Driven Design</h1>
-					<h3>J. Reuben Wetherbee</h3>
 					<p>
 						<small>Created by <a href="http://jrweth.com">J. Reuben Wetherbee</a> / <a href="http://twitter.com/jrweth">@jrweth</a></small>
 					</p>
 				</section>
 
-				<section>
-					<h2>Hello There</h2>
+				<section data-transition="zoom">
+					<h2>Acknowledgements</h2>
                     <p>
-                        Some Content
+                        Based on talk by Jeremy Cook at Confoo Conference 2015.
+                    </p>
+                    <p>
+                        <small><a href="http://jeremycook.ca">jeremycook.ca</a></small>
 					</p>
 				</section>
+                <section>
+                    <h2>Designing a Web Application</h2>
+                    <h3>E.G: Document Management System</h3>
+                    <ul class="fragment">
+                        <li>Symfony2 PHP MVC Framework</li>
+                        <li>Doctrine ORM</li>
+                        <li>Oracle DB</li>
+                        <li>Symfony Bundle for File Storage</li>
+                        <li>Sumfony Bundle for File Versioning</li>
+                        <li>Symfony Bundle for Tagging</li>
+                    </ul>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','bower_components/reveal.js/css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+                </section>
+
+                <section data-background="images/cart_before_horse.jpg" data-background-size="70%">
+<div style="height: 95vh; display:table-cell; vertical-align: bottom;"><small>
+<a href="https://www.flickr.com/photos/3059349393/3368092622">Image</a> by <a rel="nofollow" class="external text" href="http://www.flickr.com/photos/sixteenmilesofstring/">Emilio Labrador</a> is licensed under <a rel="nofollow" class="external text" href="http://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></div>
+                </small>
+                </section>
+                <section>
+                    <h2>Cart Before the Horse</h2>
+				    <h3>Technolgy Driven Development</h3>
+                    <p>
+                        Choose which technology you are using, and then fit your domain logic into it.
+                    </p>
+                    <h4>vs</h4>
+                    <h3>Domain Driven Development</h3>
+                    <p>
+                        Develop your domain logic, and then create an interface for your technology to interact with it.
+                    </p>
+                </section>
 
 
 			</div>
@@ -89,9 +104,9 @@
 				controls: true,
 				progress: true,
 				history: true,
-				center: true,
+				center: false,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'zoom', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
