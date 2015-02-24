@@ -1,0 +1,25 @@
+{
+  "name": "PresentationDomainDrivenDesign",
+  "version": "1.0.0",
+  "authors": [
+    "J. Reuben Wetherbee <jrweth@gmail.com>"
+  ],
+  "main": "index.html",
+  "description": "Presentation in Reveal.js of Domain Driven Design",
+  "moduleType": [
+  ],
+  "keywords": [
+    "DDD",
+    "Domain Driven Design",
+    "Presentation"
+  ],
+  "license": "MIT",
+  "homepage": "jrweth.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
