@@ -1,4 +1,4 @@
-Functional Reactive Programming Presentation
+Presentation on Data Driven Design
 =========================
 
 Presentation in reveal.js briefly highlighting Domain Driven Design.
