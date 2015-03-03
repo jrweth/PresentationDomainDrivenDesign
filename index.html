@@ -41,7 +41,8 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-center="true">
+<!-- Introduction ######################################## -->				
+                <section data-center="true">
 					<h1>Domain Driven Design</h1>
 					<p>
 						<small>Created by <a href="http://jrweth.com">J. Reuben Wetherbee</a> / <a href="http://twitter.com/jrweth">@jrweth</a></small>
@@ -110,6 +111,9 @@
                     </ul>
 
                 </section>
+
+<!-- MVC ######################################## -->				
+
                 <section>
                     <h2>MVC To The Rescue!</h2>
                     <img style="max-width: 70%" src="images/MVC_man.svg" alt="MVC to the rescue" title="MVC to the rescue!">
@@ -148,19 +152,156 @@
                     </div>
                     <h2 class="fragment">Where is the Domain?</h2>
                 </section>
+<!-- Application Architecture ################################################# -->                
                 <section>
-                    <h2>Domain Driven Design: Types of Logic</h2>
+                    <h2>Domain Driven Design Architecture:<br>Decouple Types of Logic</h2>
                     <ul>
                         <li>Domain Logic</li>
                         <li>Application Logic</li>
                         <li>Presentation Logic</li>
                     </ul>
+                    <ul class="fragment">
+                        <li>Accounts, Withdrawals, Customer...</li>
+                        <li>Routes, HTTP Request/Response, DBs</li>
+                        <li>Javascript, CSS, HTML</li>
+                    </ul>
                 </section>
                 <section>
                     <h2>Hexagonal Architecture</h2>
-                    <img src="images/angular_mvc.svg" alt="anguler mvc image" title="Angular MVC image">
+                    <h3>Developed by Alistair Cockburn</h3>
+                    <img src="images/hexagonal1.svg" alt="non-hexagonal architecture" title="Non-Hexagonal Architecture">
                 </section>
-			</div>
+                <section>
+                    <h2>Hexagonal Architecture</h2>
+                    <h3>Domain Ports and Adapters</h3>
+                    <img src="images/hexagonal2.svg" alt="hexagonal architecture" title="Hexagonal Architecture">
+                </section>
+                <section>
+                    <h2>Ports and Adapters Example</h2>
+                    <h3>Banking</h3>
+                    <img src="images/hexagonal3.svg" alt="hexagonal architecture" title="Hexagonal Architecture">
+                </section>
+                <section>
+                    <h2>Ports and Adapters in MVC</h2>
+                    <img src="images/adr.svg" alt="ports and adapters MVC" title="Ports and Adapters MVC">
+                </section>
+                <section>
+                    <h2>Ports and Adapters Advantages</h2>
+                        <ul>
+                            <li>Domain logic restricted to Domain</li>
+                            <li>Can swap out adapters</li>
+                            <li>Can Develop Domain Code before Application Adapter code</li>
+                            <li>Upgrading/Changing Frameworks? Just Change Adapters</li>
+                </section>
+<!-- Domain Definition  ################################################# -->                
+                <section>
+                    <h2>What is a Domain?</h2>
+                    <ul>
+                        <li>Entities</li>
+                        <li>Aggregates</li>
+                        <li>Value Objects</li>
+                        <li>Services</li>
+                        <li>Events</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>What is a Domain: Entities</h2>
+                    <ul>
+                        <li>Represents a concept in your domain</li>
+                        <li>Each instance must be considered unique and have a way of distinguishing identity</li>
+                        <li>Houses the logic and operation of the concept</li>
+                        <li>Beware the "Anemic" Domain Model</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>What is a Domain: Aggregates</h2>
+                    <ul>
+                        <li>A collection of entities contained by another entity (e.g Order and Order Items)</li>
+                        <li>Containing Entity is the Aggregate Root</li>
+                        <li>Child Instances can only be accessed via the aggregate root</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>What is a Domain: Value Objects</h2>
+                    <ul>
+                        <li>Used when you only care about the attributes and logic of the concept</li>
+                        <li>Immutable (side effect free)</li>
+                        <li>Replacements for Simple Types</li>
+                        <li>E.G. Currency</li>
+                    </ul>
+                </section>    
+                <section>
+                    <h2>What is wrong with Simple Types?</h2>
+                    <pre><code data-trim>class Person {
+    public function __construct($firstName, $lastName) {
+        //Code here
+    }
+}
+$person = new Person('Cook', 'Jeremy'); //WHOOPS!!</code></pre>
+                </section>
+              
+                <section>
+                    <h2>Why Value Objects are better than Simple Types</h2>
+                    <pre><code data-trim>class FirstName{
+    public function __construct($firstName)) {//Code here}
+}
+class LastName{
+    public function __construct($LastName)) {//Code here}
+}
+class Person{
+    public function __construct(FirstName $firstName, LastName $lastName)) {//Code here}
+}
+$person = new Person(new LastName('Cook'), new FirstName('Jeremy')); //Throws Exception
+$person = new Person(new FirstName('Jeremy'), new LastName('Cook')); //Yeah!
+</code></pre>
+                </section>
+              
+                <section>
+                    <h2>What is a Domain: Services</h2>
+                    <ul>
+                        <li>Models a domain concept that does not conceptually belong to an entity or value object</li>
+                        <li>Stateless</li>
+                        <li>Defined in terms of the domain model</li>
+                    </ul>
+<pre><code>class MoneyTransfer {
+    public static function transferBetweenAccounts(Account $from, Account $to, Money $amount) {
+        $from->debitForTransfer($money, $to);
+        $to->creditFromTransfer($money, $from);
+      }
+}
+//In the application service...
+$from = $accountRepository->findByAccNumber('123456');
+$to = $accountRepository->findByAccNumber('123457');
+$money = new Money('100', new Currency('CAD'));
+MoneyTransfer::transferBetweenAccounts($from, $to, $money);</code></pre>
+                </section>
+                <section>
+                    <h2>What is a Domain: Events</h2>
+                    <ul>
+                        <li>Allows a domain to signal that something has happened</li>
+                        <li>Allows cross domain information to be accessed</li>
+                    </ul>
+                    <pre><code class="php">MoneyTransfer::transferBetweenAccounts($from, $to, $money);
+$event = EventFactory::createEventForSuccessfulAccountTransfer($from, $to, $money);
+$eventType = EventTypes::SUCCESSFUL_MONEY_TRANSFER;
+$eventDispatcher->raiseEvent($ventType, $event);</code></pre>
+                </section>
+<!-- ADR model      ######################################## -->				
+			
+
+<!-- Conclusion ###########################################-->
+                <section>
+                    <h2>References</h2>
+                    <ul>
+                
+                        <li><a href="http://www.slideshare.net/jeremycook0/beyond-mvc-from-model-to-domain">
+                            Jeremy Cook - Beyond MVC: From Model to Domain
+                        </a></li>
+                        <li><a href="https://domainlanguage.com/ddd/patterns/DDD_Reference_2011-01-31.pdf">
+                            Eric Evans - Domain Driven Design
+                        </a></li>
+                </section>
+            </div>
 
 		</div>
 
