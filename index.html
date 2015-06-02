@@ -19,7 +19,6 @@
 		<link rel="stylesheet" href="css/style.css">
 
 		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="bower_components/reveal.js/lib/css/night.css">
 		<link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
@@ -98,9 +97,8 @@
                         <li>Symfony2 PHP MVC Framework</li>
                         <li>Doctrine ORM</li>
                         <li>Oracle DB</li>
-                        <li>Symfony Bundle for File Storage</li>
-                        <li>Sumfony Bundle for File Versioning</li>
-                        <li>Symfony Bundle for Tagging</li>
+                        <li>Symfony Bundle for Applicatoin Logic</li>
+                        <li>FOS REST Symfony Bundle for Tagging</li>
                     </ul>
                     <ul class="fragment">
                         <li>Customers</li>
@@ -327,7 +325,7 @@ $eventDispatcher->raiseEvent($ventType, $event);</code></pre>
 					{ src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'bower_components/reavel.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true },
 					{ src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true }
 				]
 			});
