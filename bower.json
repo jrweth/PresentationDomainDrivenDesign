@@ -6,8 +6,7 @@
   ],
   "main": "index.html",
   "description": "Presentation in Reveal.js of Domain Driven Design",
-  "moduleType": [
-  ],
+  "moduleType": [],
   "keywords": [
     "DDD",
     "Domain Driven Design",
@@ -21,5 +20,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "reveal.js": "~3.1.0"
+  }
 }
